@@ -1,16 +1,61 @@
-# React + Vite
+# MindfulMana
+A simple, calming React meditation app focused on guided breathing sessions, daily mindfulness reminders, and beginner-friendly UI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MindfulMana is a lightweight React application designed to help users practice structured breathing and build consistent meditation habits. It emphasizes simplicity, accessibility, and a clean UI suitable for beginners.
 
-Currently, two official plugins are available:
+## Features (Planned)
+- Guided breathing cycle with inhale/hold/exhale animation  
+- Daily mindfulness quote (API or fallback local data)  
+- Meditation streak tracking using localStorage  
+- Responsive, mobile-friendly UI  
+- Ambient sound toggle  
+- Clean, accessible design  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
+Coming soon
 
-## React Compiler
+## Screenshots
+Coming soon
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
+- React (Vite)
+- JavaScript
+- CSS Modules
+- LocalStorage for persistence
+- Fetch API for data retrieval
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repo  
+```bash
+git clone https://github.com/<user>/mindfulmana.git
+cd mindfulmana
+npm install
+npm run dev
+```
+
+## Project Structure
+/src
+  /components
+  /hooks
+  /pages
+  /assets
+  App.jsx
+  main.jsx
+
+
+## Status
+🚧 In active development. Initial features in progress.
+
+## Contributing
+This project is open to improvements and suggestions. Please review the existing guidelines in CONTRIBUTING.md before contributing.
+
+## Code of Conduct
+This project adheres to the Contributor Covenant Code of Conduct. For details, see CODE_OF_CONDUCT.md.
+
+## License
+Distributing under the MIT License. See LICENSE for more information.
+
+
+
+
