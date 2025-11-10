@@ -13,17 +13,34 @@ function MeditationType({ image, minutes }) {
   );
 }
 
+function Header() {
+  return (
+    <header className="header">
+      <div className="header_inner">
+        <div className="brand">
+          <span className="brand_logo" aria-hidden></span>
+          <h1 className="title">Meditations</h1>
+        </div>
+        <button className="ghost">About</button>
+      </div>
+    </header>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="container">
-        <article>
-            <MeditationType image="src/assets/Koi.png" minutes={5} />
-            <MeditationType image="src/assets/Lily.png" minutes={15} />
-            <MeditationType image="src/assets/Koi.png" minutes={25} />
-        </article>
+      <Header />
+      <div className="body-section">
+        <div className="list-container">
+          <article>
+              <MeditationType image="src/assets/Koi.png" minutes={5} />
+              <MeditationType image="src/assets/Lily.png" minutes={15} />
+              <MeditationType image="src/assets/Wave.png" minutes={25} />
+          </article>
+        </div>
       </div>
     </>
   )
