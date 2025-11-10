@@ -3,8 +3,84 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /*Testing colors*/
+  --accent: #ff8a00;
+  --accent-2: #ffb800;
+  --surface: rgba(255,255,255,0.75);
+  --border: rgba(255,255,255.0.6);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  --radius: 16px;
 }
+
+.header {
+  position: sticky; /* STAYS VISIBLE ON SCROLL */
+  top: 0;           /* Copilot says this sets the offset property, whick the position threshold needs to know when to make it stick*/
+  z-index: 50;      /* Copilot says this controls the stacking order of elements*/
+  backdrop-filter: saturate(160%) blur(12px); /* New toy from the toybox */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  margin: 0 auto 1.25rem;
+  max-width: 980px;
+}
+
+.header_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.brand_logo {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  font-weight: 650;
+  letter-spacing: .2px;
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  color: rgb(105, 71, 58);
+}
+
+.ghost{
+  appearance: none;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.6);
+  padding: .45rem .75rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  color: rgb(105, 71, 58);
+}
+
+.ghost:hover {
+  background: var(--accent-2);
+}
+
+.header h1 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 600;
+  margin: 0;
+
+  letter-spacing: 0.5px;
+}
+
 ul, li {
   list-style: none;
 }
@@ -15,7 +91,7 @@ article {
 }
 
 body {
-  background: radial-gradient(ellipse at bottom  left, #fff5e1, #fbc89e)
+  background: radial-gradient(ellipse at bottom  left, #fcfaf2, #fee2c2);
 }
 /*#fff5e1*/
 .meditationCard {
@@ -24,8 +100,8 @@ body {
   justify-content: space-between;
 
   width: 100%;
-  padding: 16px 48px;
-  margin: 2rem auto;
+  padding: 0rem 4rem;
+  margin: 1.3rem auto;
 
   background-image: linear-gradient(to right, rgb(255, 119, 0), rgb(255, 174, 0));
   color:white;
@@ -48,7 +124,7 @@ body {
   object-fit: contain;
 }
 
-.container {
+.list-container {
   max-width: 40rem;
   margin: 0 auto;
   width: 100%;
