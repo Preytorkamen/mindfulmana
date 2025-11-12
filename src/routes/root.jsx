@@ -1,19 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
+import Header from '../components/Header.jsx';
+
+import '../styles/index.css';
+import '../styles/selection.css';
+import '../styles/meditation-card.css';
 
 //Dummy root component mockup (Chat GPT), will replace later
 export default function Root() {
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{
-        background: "linear-gradient(to bottom right, #fff5e1, #ffe0b2)",
-      }}
-    >
+    <div>
       {/* Header / Navbar */}
-      <header
-        className="flex justify-between items-center px-6 py-4 bg-white/80 backdrop-blur-md shadow-sm rounded-b-2xl mx-4 mt-4"
-        style={{ border: "1px solid rgba(255,255,255,0.4)" }}
-      >
+      <Header title="Mindful Mana — Daily Meditations" />
         <h1 className="text-xl font-semibold text-gray-800">
           <Link to="selection">Meditations</Link>
         </h1>
@@ -25,7 +22,6 @@ export default function Root() {
             About
           </Link>
         </nav>
-      </header>
 
       {/* Page Content */}
       <main className="flex-grow p-8">

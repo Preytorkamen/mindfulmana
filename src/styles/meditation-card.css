@@ -7,7 +7,7 @@
   padding: 0rem 4rem;
   margin: 1.3rem auto;
 
-  background-image: linear-gradient(to right, rgb(255, 119, 0), rgb(255, 174, 0));
+  background-image: linear-gradient(to right, rgb(255, 89, 0), rgb(255, 166, 0));
   color:white;
   border-radius: 3rem;
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -19,7 +19,7 @@
 .meditationCard:hover {
   transform: scale(1.005);
   box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-  background-image: linear-gradient(to right, rgb(255, 140, 40), rgb(255, 191, 53));
+  background-image: linear-gradient(to right, rgb(255, 151, 40), rgb(255, 191, 53));
 }
 
 .meditationCard img {

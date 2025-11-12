@@ -2,17 +2,13 @@ import { useState } from 'react'
 import Header from '../components/Header.jsx';
 import MeditationCard from '../components/MeditationCard.jsx';
 
-import '../styles/selection.css';
-import '../styles/meditation-card.css';
-
-
-
 function Selection() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Header />
+    <div className="selection-page">
+        <Header title="Session Length" />
       <div className="body-section">
         <div className="list-container">
           <article>
@@ -22,6 +18,7 @@ function Selection() {
           </article>
         </div>
       </div>
+    </div>
     </>
   )
 }
