@@ -1,41 +1,27 @@
 import { Link, Outlet } from "react-router-dom";
+import Header from '../components/Header.jsx';
+
+//Image Imports (If I dont do this, npm run preview won't get the images correctly)
+import monk from "../assets/Monk.png";
+
+import '../styles/index.css';
+import '../styles/root.css';
+import '../styles/selection.css';
+import '../styles/meditation-card.css';
 
 //Dummy root component mockup (Chat GPT), will replace later
 export default function Root() {
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{
-        background: "linear-gradient(to bottom right, #fff5e1, #ffe0b2)",
-      }}
-    >
-      {/* Header / Navbar */}
-      <header
-        className="flex justify-between items-center px-6 py-4 bg-white/80 backdrop-blur-md shadow-sm rounded-b-2xl mx-4 mt-4"
-        style={{ border: "1px solid rgba(255,255,255,0.4)" }}
-      >
-        <h1 className="text-xl font-semibold text-gray-800">
-          <Link to="selection">Meditations</Link>
-        </h1>
-        <nav>
-          <Link
-            to="/about"
-            className="text-sm font-medium bg-white px-4 py-2 rounded-full shadow-sm hover:shadow-md transition"
-          >
-            About
-          </Link>
-        </nav>
-      </header>
-
-      {/* Page Content */}
-      <main className="flex-grow p-8">
-        <Outlet />
-      </main>
-
-      {/* Optional Footer */}
-      <footer className="text-center text-sm text-gray-500 py-4">
-        © {new Date().getFullYear()} Meditation App
-      </footer>
+    <div>
+      <Header title="Mindful Mana — Daily Meditations" />
+        <div className="monk-image" >
+          <img src={monk} alt="Monk" />
+        </div>
+          <Link to="selection">
+          <button className="large-ghost">
+            Begin Meditation
+          </button>
+        </Link>
     </div>
   );
 }

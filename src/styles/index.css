@@ -1,0 +1,35 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /*Testing colors*/
+  --accent: #ff8a00;
+  --accent-2: #ffb800;
+  --surface: rgba(255,255,255,0.75);
+  --border: rgba(255,255,255.0.6);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  --radius: 16px;
+}
+
+body {
+  background-image: radial-gradient(ellipse at bottom  left, #ffffff, #ffcc92);
+  min-height: 100vh;
+  width: 100%;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+}
