@@ -27,6 +27,10 @@
   max-width: 980px;
 }
 
+body {
+  background: radial-gradient(ellipse at bottom  left, #fcfaf2, #fee2c2);
+}
+
 .header_inner {
   display: flex;
   align-items: center;
@@ -89,40 +93,7 @@ article {
   display: flex;
   flex-direction: column;
 }
-
-body {
-  background: radial-gradient(ellipse at bottom  left, #fcfaf2, #fee2c2);
-}
 /*#fff5e1*/
-.meditationCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  width: 100%;
-  padding: 0rem 4rem;
-  margin: 1.3rem auto;
-
-  background-image: linear-gradient(to right, rgb(255, 119, 0), rgb(255, 174, 0));
-  color:white;
-  border-radius: 3rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.meditationCard:hover {
-  transform: scale(1.005);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-}
-
-.meditationCard img {
-  width:15rem;
-  height: auto;
-  flex-shrink: 0;
-  object-fit: contain;
-}
 
 .list-container {
   max-width: 40rem;
@@ -131,3 +102,4 @@ body {
   padding: 16px;
   box-sizing: border-box;
 }
+
