@@ -54,7 +54,7 @@
 }
 
 .ghost:hover {
-  background: var(--accent-2);
+  background:rgb(255, 221, 173);
 }
 
 .header h1 {
