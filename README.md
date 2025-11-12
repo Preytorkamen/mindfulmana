@@ -17,8 +17,10 @@ MindfulMana is a lightweight React application designed to help users practice s
 ## Demo
 Coming soon
 
-## Screenshots
-Coming soon
+### 🖼️ Preview Images
+
+![Home Screen](./src//assets/HomeScreenshot.png)
+![Selection Screen](./src//assets/SelectScreenshot.png)
 
 ## Tech Stack
 - React (Vite)
