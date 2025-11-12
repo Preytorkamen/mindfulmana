@@ -17,9 +17,11 @@ export default function Root() {
         <div className="monk-image" >
           <img src={monk} alt="Monk" />
         </div>
-        <button className="large-ghost">
-          <Link to="selection">Begin Meditation</Link>
-        </button>
+          <Link to="selection">
+          <button className="large-ghost">
+            Begin Meditation
+          </button>
+        </Link>
     </div>
   );
 }
