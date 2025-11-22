@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import Header from '../components/Header.jsx';
+import QuoteWidget from "../components/QuoteWidget.jsx";
 
 //Image Imports (If I dont do this, npm run preview won't get the images correctly)
 import monk from "../assets/Monk.png";
@@ -21,6 +22,7 @@ export default function Root() {
           <button className="large-ghost">
             Begin Meditation
           </button>
+          <QuoteWidget />
         </Link>
     </div>
   );
