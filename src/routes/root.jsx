@@ -10,11 +10,10 @@ import '../styles/root.css';
 import '../styles/selection.css';
 import '../styles/meditation-card.css';
 
-//Dummy root component mockup (Chat GPT), will replace later
 export default function Root() {
   return (
     <div>
-      <Header title="Mindful Mana — Daily Meditations" />
+      <Header title="Mindful Mana" />
         <div className="monk-image" >
           <img src={monk} alt="Monk" />
         </div>
