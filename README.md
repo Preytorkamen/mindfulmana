@@ -1,3 +1,6 @@
+![License](https://img.shields.io/github/license/Preytorkamen/mindfulmana)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![Contributions](https://img.shields.io/badge/contributions-welcome-orange)
 # MindfulMana
 A simple, calming React meditation app focused on guided breathing sessions, daily mindfulness reminders, and beginner-friendly UI.
 
@@ -14,8 +17,10 @@ MindfulMana is a lightweight React application designed to help users practice s
 ## Demo
 Coming soon
 
-## Screenshots
-Coming soon
+### 🖼️ Preview Images
+
+![Home Screen](./src//assets/HomeScreenshot.png)
+![Selection Screen](./src//assets/SelectScreenshot.png)
 
 ## Tech Stack
 - React (Vite)
