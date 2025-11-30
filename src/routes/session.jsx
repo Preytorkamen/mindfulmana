@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, useRef } from "react";
 // useLocation = "What page am I on, and what data was sent to me?"
 // useNavigate = "Redirects user to another page programmatically, rather than clicking a link"
 import '../styles/session.css';
@@ -7,17 +7,33 @@ import '../styles/session.css';
 export default function Session() {
     const location = useLocation();
     const navigate = useNavigate();
-
+    
     // Setting up Countdown Shenanigans
     const minutes = location.state?.minutes ?? 5;
-    
     const totalSeconds = minutes * 60;
+    
+    
+    
+    // Timer
     const [remaining, setRemaining] = useState(totalSeconds);
+    const [isPaused, setIsPaused] = useState(false);
+    
+    const mins = Math.floor(remaining / 60);
+    const secs = remaining % 60;
+    
+    // Breathing Cycle Text
+    const [breathPhase, setBreathPhase] = useState("Inhale");
+    const prevPhaseRef = useRef("Inhale");
+
+    // Cycle Duration
+    const cycleDuration = 8; // Seconds for one in-hold-out cycle
 
     // Countdown Shenanigans
     useEffect(() => {
+        if (isPaused) return;
+
         const id = setInterval(() => {
-            setRemaining(prev => {
+            setRemaining((prev) => {
                 if (prev <= 1) {
                     clearInterval(id);
                     return 0;
@@ -27,35 +43,96 @@ export default function Session() {
         }, 1000);
 
         return () => clearInterval(id);
-    }, [totalSeconds]);
+    }, [totalSeconds, isPaused]);
+   
+    // Breathing Phase Shenanigans
+    useEffect(() => {
+        if (isPaused) return;
 
-    // Breathing Cycle
-    let cycleDuration = 8;
+        const cycleMs = cycleDuration * 1000;
+        const inhaleEnd = cycleMs * 0.4; // 0-40% Inhale
+        const holdEnd = cycleMs * 0.6;   // 40%-60% Hold, then Exhale
 
-    const mins = Math.floor(remaining / 60);
-    const secs = remaining % 60;
+        const start = performance.now();
 
-    // Breathing Cycle Text
-    const [breathPhase, setBreathPhase] = useState("Inhale");
+        const id = setInterval(() => {
+            const now = performance.now();
+            const t = (now - start) % cycleMs;
+
+            let nextPhase;
+
+            if (t < inhaleEnd) nextPhase = "Inhale";
+            else if (t < holdEnd) nextPhase = "Hold";
+            else nextPhase = "Exhale";
+
+            if (nextPhase !== prevPhaseRef.current) {
+                prevPhaseRef.current = nextPhase;
+                setBreathPhase(nextPhase);
+
+                // Vibrate on phase change
+               if ("vibrate" in navigator) {
+                    if (nextPhase === "Inhale") {
+                        navigator.vibrate(80);
+                    } else if (nextPhase === "Hold") {
+                        navigator.vibrate([60, 40, 60]);
+                    } else if (nextPhase === "Exhale") {
+                        navigator.vibrate(120);
+                    }
+                }
+ 
+            }
+        }, 150);
+        return () => clearInterval(id);
+    }, [cycleDuration, isPaused]);
 
     return (
         <body className="session-page">
             <div>
-                <div className = "orb-wrapper">
-                    <div className = "orb" style = {{ "--cycle-duration": `${cycleDuration}s` }}>
-                    </div>
-                    <div className = "timer">
-                        {mins.toString().padStart(2, "0")}:
-                        {secs.toString().padStart(2, "0")}
+                <div className = "orb-ui-container">
+                    <div className="orb-wrapper">
+                        {/* Actual Orb Ball*/}
+                        <div className = "orb" style = {{ 
+                            "--cycle-duration": `${cycleDuration}s`,
+                            animationPlayState: isPaused ? "paused" : "running", }}>
+                        </div>
+                        {/* Inhale / Hold / Exhale Text */}
+                        <div className={`breath-cue breath-${breathPhase}`}>
+                            {breathPhase === "Inhale" && "Breathe In"}
+                            {breathPhase === "Hold" && "Hold"}
+                            {breathPhase === "Exhale" && "Exhale"}
+                        </div>
                     </div>
 
-                    {remaining === 0 && (
-                        <button className = "finish-button" onClick = {() => navigate('/')} >
-                            Finish Session - Back Home
-                        </button>
-                    )}
+
+                    {/* Timer and Controls */}
+                    <div className="session-info">
+                        <div className = "timer">
+                            {mins.toString().padStart(2, "0")}:
+                            {secs.toString().padStart(2, "0")}
+                        </div>
+
+                        <div className="session-controls">
+                            <button
+                                className="session-button ghost"
+                                onClick={() => setIsPaused((p) => !p)}>
+                                {isPaused ? "Resume" : "Pause"}
+                            </button>
+
+                            <button
+                                className="session-button ghost"
+                                onClick={() => navigate("/")}>
+                                    End Session
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
+                    {remaining === 0 && (
+                        <p className="session-complete-text">
+                            Session complete. You can calmly return whenever you're ready.
+                        </p>
+                    )}
             </div>
         </body>
-    )
+    );
 }

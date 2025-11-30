@@ -15,13 +15,13 @@
 }
 
 body {
-  background-image: radial-gradient(ellipse at bottom  left, #feeddd, #f7cea0);
+  background-image: radial-gradient(ellipse at bottom  left, #ffe4bc, #f8be91);
   min-height: 100vh;
   width: 100%;
 }
 
 h4 {
-  color: rgb(226, 138, 84);
+  color: rgb(169, 110, 43);
   font-weight: 500;
   margin-top: 50px;
   letter-spacing: 1px;

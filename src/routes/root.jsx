@@ -18,7 +18,7 @@ export default function Root() {
           <img src={monk} alt="Monk" />
         </div>
           <Link to="selection">
-          <button className="large-ghost">
+          <button className="ghost">
             Begin Meditation
           </button>
           <QuoteWidget />
