@@ -15,7 +15,7 @@ MindfulMana is a lightweight React application designed to help users practice s
 - Clean, accessible design  
 
 ## Demo
-Coming soon
+https://preytorkamen.github.io/mindfulmana/
 
 ### 🖼️ Preview Images
 
