@@ -8,21 +8,31 @@ import monk from "../assets/Monk.png";
 import '../styles/index.css';
 import '../styles/root.css';
 import '../styles/selection.css';
-import '../styles/meditation-card.css';
 
 export default function Root() {
   return (
-    <div>
-      <Header title="Mindful Mana" />
-        <div className="monk-image" >
+    <div className="app-wrapper">
+      <div className="app-card">
+        {/* Header */}
+        <div className="app-header">
+          <Header title="Mindful Mana" />
+        </div>
+
+        {/* Monk image */}
+        <div className="monk-image">
           <img src={monk} alt="Monk" />
         </div>
-          <Link to="selection">
+
+        {/* Button to go to selection page */}
+        <Link to="selection" className="begin-link">
           <button className="ghost">
             Begin Meditation
           </button>
-          <QuoteWidget />
         </Link>
+
+        {/* Quote (not a link) */}
+        <QuoteWidget />
+      </div>
     </div>
   );
 }

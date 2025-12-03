@@ -1,3 +1,5 @@
+import '../styles/header.css';
+
 export default function Header({title}) {
   return (
     <header className="header">

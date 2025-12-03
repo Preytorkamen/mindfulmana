@@ -1,4 +1,4 @@
-.monk-image {
+/* .monk-image {
     display: flex;
     align-items: center;
     margin: 25px auto;
@@ -7,14 +7,14 @@
     background-image: linear-gradient(to right, rgb(255, 89, 0), rgb(255, 166, 0));
     border-radius: 30rem;
     width: 25rem;
-}
+} */
 
-.monk-image img {
+/* .monk-image img {
   width:25rem;
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
-}
+} */
 
 .large-ghost{
   appearance: none;
