@@ -1,22 +1,3 @@
-.header {
-  position: sticky; /* STAYS VISIBLE ON SCROLL */
-  top: 0;           /* Copilot says this sets the offset property, whick the position threshold needs to know when to make it stick*/
-  z-index: 50;      /* Copilot says this controls the stacking order of elements*/
-  backdrop-filter: saturate(160%) blur(12px); /* New toy from the toybox */
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow-lg);
-  margin: 0 auto 1.25rem;
-  max-width: 980px;
-}
-
-.header_inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-}
 
 .brand {
   display: flex;
@@ -42,12 +23,17 @@
   color: rgb(169, 110, 43);
 }
 
+.card-button {
+  all: unset;
+}
+
 .ghost{
   appearance: none;
   border: 1px solid rgba(0,0,0,0.06);
   background: rgba(255,255,255,0.6);
   padding: .45rem .75rem;
   border-radius: 10px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   color: rgb(169, 110, 43);

@@ -8,7 +8,7 @@ import lily from "../assets/Lily.png";
 import wave from "../assets/Wave.png";
 
 function Selection() {
-  const [count, setCount] = useState(0)
+  //const [count, setCount] = useState(0)
 
   return (
     <>

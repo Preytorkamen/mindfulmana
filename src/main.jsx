@@ -9,6 +9,7 @@ import {
 
 // Routes
 import Selection from "./routes/selection.jsx";
+import Session from "./routes/session.jsx";
 
 const router = createBrowserRouter ([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter ([
   {
     path: "selection",
     element: <Selection />,
+  },
+  {
+    path: "session",
+    element: <Session />,
   },
 ]);
 

@@ -14,14 +14,129 @@
   --radius: 16px;
 }
 
-body {
-  background-image: radial-gradient(ellipse at bottom  left, #ffffff, #ffcc92);
+/* Trying to implement responsive design */
+/* Full-page centering */
+.app-wrapper {
   min-height: 100vh;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff; /* outer background */
 }
 
+/* The phone-shaped gradient card */
+.app-card {
+  width: 100%;
+  max-width: 420px;         /* never wider than this */
+  padding: 1.5rem 1.75rem;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fcd9b6, #f5b47e);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  overflow:hidden;
+  position:relative;
+}
+
+/* Header area */
+.app-header {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+/* Tablet and up */
+@media (min-width: 768px) {
+  .app-card {
+    max-width: 700px;   /* or whatever looks nice */
+  }
+}
+
+/* Big desktop */
+@media (min-width: 1200px) {
+  .app-card {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-card {
+    max-width: 1024px; /* a bit wider on big screens */
+  }
+}
+@media (min-width: 1280px) {
+  .app-card {
+    max-width: 1280px; /* even wider on huge screens */
+  }
+}
+@media (min-width: 1536px) {
+  .app-card {
+    max-width: 1536px; /* even wider on gigantic screens */
+  }
+}
+@media (min-width: 1920px) {
+  .app-card {
+    max-width: 1920px; /* even wider on massive screens */
+  }
+}
+
+
+
+/* Monk image as a perfect circle */
+.monk-image {
+  width: min(300px, 100vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  background: radial-gradient(circle at 30% 30%, #ffb347, #ff7a18);
+}
+
+.monk-image img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+/* Button + link */
+.begin-link {
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+/* Quote styling */
+.quote-widget { /* or whatever class you use inside QuoteWidget */
+  max-width: 90%;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Tiny phones */
+@media (max-width: 480px) {
+  .app-card {
+    padding: 1.1rem 1.25rem;
+  }
+
+  .monk-image {
+    width: 200px;
+  }
+}
+
+
+/* body {
+  min-height: 100vh;
+  max-width: 100%;
+} */
+
 h4 {
-  color: rgb(226, 138, 84);
+  color: rgb(169, 110, 43);
   font-weight: 500;
   margin-top: 50px;
   letter-spacing: 1px;
