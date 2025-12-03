@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import Root from "./routes/root.jsx";
 import ErrorPage from "./error-page";
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import {
 import Selection from "./routes/selection.jsx";
 import Session from "./routes/session.jsx";
 
-const router = createBrowserRouter ([
+const router = createHashRouter ([
   {
     path: "/",
     element: <Root />,
