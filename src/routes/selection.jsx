@@ -12,15 +12,19 @@ function Selection() {
 
   return (
     <>
-    <div className="selection-page">
-        <Header title="Session Length" />
-      <div className="body-section">
-        <div className="list-container">
-          <article>
-              <MeditationCard image= {koi} alt="Koi" minutes={5} />
-              <MeditationCard image= {lily} alt="Lily" minutes={15} />
-              <MeditationCard image= {wave} alt="Wave" minutes={25} />
-          </article>
+    <div className="app-wrapper">
+      <div className="app-card">
+        <div className="selection-page">
+            <Header title="Session Length" />
+          <div className="body-section">
+            <div className="list-container">
+              <article>
+                  <MeditationCard image= {koi} alt="Koi" minutes={5} />
+                  <MeditationCard image= {lily} alt="Lily" minutes={15} />
+                  <MeditationCard image= {wave} alt="Wave" minutes={25} />
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </div>

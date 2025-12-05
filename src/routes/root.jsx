@@ -7,32 +7,34 @@ import monk from "../assets/Monk.png";
 
 import '../styles/index.css';
 import '../styles/root.css';
-import '../styles/selection.css';
+import '../styles/backgrounds.css';
 
 export default function Root() {
   return (
-    <div className="app-wrapper">
-      <div className="app-card">
-        {/* Header */}
-        <div className="app-header">
-          <Header title="Mindful Mana" />
+    <body className="root-page bg-landing1">
+      <div className="app-wrapper">
+        <div className="app-card bg-ghost">
+          {/* Header */}
+          <div className="app-header">
+            <Header title="Mindful Mana" />
+          </div>
+
+          {/* Monk image */}
+          <div className="monk-image bg-moon">
+            <img src={monk} alt="Monk" />
+          </div>
+
+          {/* Button to go to selection page */}
+          <Link to="selection" className="begin-link">
+            <button className="ghost">
+              Begin Meditation
+            </button>
+          </Link>
+
+          {/* Quote (not a link) */}
+          <QuoteWidget />
         </div>
-
-        {/* Monk image */}
-        <div className="monk-image">
-          <img src={monk} alt="Monk" />
-        </div>
-
-        {/* Button to go to selection page */}
-        <Link to="selection" className="begin-link">
-          <button className="ghost">
-            Begin Meditation
-          </button>
-        </Link>
-
-        {/* Quote (not a link) */}
-        <QuoteWidget />
       </div>
-    </div>
+    </body>
   );
 }

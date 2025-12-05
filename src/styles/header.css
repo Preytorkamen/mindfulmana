@@ -3,17 +3,17 @@
   top: 0;           /* Copilot says this sets the offset property, whick the position threshold needs to know when to make it stick*/
   z-index: 50;      /* Copilot says this controls the stacking order of elements*/
   backdrop-filter: saturate(160%) blur(12px); /* New toy from the toybox */
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.53);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow: var(--shadow-lg);
-  margin: 0 auto 1.25rem;
+  margin: 12px auto 12px auto;
   max-width: 960px;
 }
 
 .header_inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
+  justify-content: center;
+  padding: 4px 16px;
 }

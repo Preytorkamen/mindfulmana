@@ -16,6 +16,23 @@
   object-fit: contain;
 } */
 
+.app-card-root {
+  width: 100%;
+  max-width: 420px;         /* never wider than this */
+  padding: 1.5rem 1.75rem;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fcd9b6, #f5b47e);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  overflow:hidden;
+  position:relative;
+}
+
 .large-ghost{
   appearance: none;
   width: 15rem;
