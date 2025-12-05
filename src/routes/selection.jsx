@@ -12,22 +12,28 @@ function Selection() {
 
   return (
     <>
-    <div className="app-wrapper">
-      <div className="app-card">
-        <div className="selection-page">
-            <Header title="Session Length" />
-          <div className="body-section">
-            <div className="list-container">
-              <article>
-                  <MeditationCard image= {koi} alt="Koi" minutes={5} />
-                  <MeditationCard image= {lily} alt="Lily" minutes={15} />
-                  <MeditationCard image= {wave} alt="Wave" minutes={25} />
-              </article>
+    <body className="selection-page bg-landing1">
+      <div className="app-wrapper">
+        <div className="app-card bg-ghost">
+
+          {/* Header */}
+          <div className="app-header">
+              <Header title="Session Length" />
+            <div className="body-section">
+
+              {/* Meditation Cards */}
+              <div className="list-container">
+                <article>
+                    <MeditationCard image= {koi} alt="Koi" minutes={5} />
+                    <MeditationCard image= {lily} alt="Lily" minutes={15} />
+                    <MeditationCard image= {wave} alt="Wave" minutes={25} />
+                </article>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </body>
     </>
   )
 }
