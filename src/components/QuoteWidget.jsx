@@ -14,7 +14,7 @@ function QuoteWidget() {
                 const data = await res.json();
                 setQuote(data.quote);
             } catch (err) {
-                setError('Could not load a quote. Try a slow breath instead.');
+                setError('In the middle of every difficulty lies opportunity. - Albert Einstein');
                 console.error(err);
             }
         };
@@ -22,7 +22,7 @@ function QuoteWidget() {
         fetchQuote();
     }, []);
 
-    if (error) return <p>{error}</p>;
+    if (error) return <h4>{error}</h4>;
     return <h4>{quote}</h4>;
 }
  

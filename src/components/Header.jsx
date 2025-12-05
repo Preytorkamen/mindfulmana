@@ -8,7 +8,7 @@ export default function Header({title}) {
           <span className="brand_logo" aria-hidden></span>
           <h1 className="title">{title}</h1>
         </div>
-        <button className="ghost">About</button>
+        {/* <button className="ghost">About</button> */}
       </div>
     </header>
   );

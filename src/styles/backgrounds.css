@@ -1,0 +1,21 @@
+.bg-standard {
+  background: linear-gradient(180deg, #fcd9b6, #f5b47e);
+}
+
+.bg-ghost {
+  background-color:rgba(255, 255, 255, 0.21);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari*/
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.bg-moon {
+  background: rgba(101, 70, 215, 0.692);
+}
+
+.bg-landing1 {
+    background-image: url("../assets/MeditationBG2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -21,7 +21,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff; /* outer background */
 }
 
 /* The phone-shaped gradient card */
@@ -30,7 +29,6 @@
   max-width: 420px;         /* never wider than this */
   padding: 1.5rem 1.75rem;
   border-radius: 24px;
-  background: linear-gradient(180deg, #fcd9b6, #f5b47e);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 
   display: flex;
@@ -50,12 +48,11 @@
 /* Tablet and up */
 @media (min-width: 768px) {
   .app-card {
-    max-width: 700px;   /* or whatever looks nice */
+    max-width: 700px;
   }
 }
 
-/* Big desktop */
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .app-card {
     max-width: 900px;
   }
@@ -63,24 +60,24 @@
 
 @media (min-width: 1024px) {
   .app-card {
-    max-width: 1024px; /* a bit wider on big screens */
+    max-width: 1024px;
   }
 }
 @media (min-width: 1280px) {
   .app-card {
-    max-width: 1280px; /* even wider on huge screens */
+    max-width: 1280px;
   }
 }
 @media (min-width: 1536px) {
   .app-card {
-    max-width: 1536px; /* even wider on gigantic screens */
+    max-width: 1536px;
   }
 }
 @media (min-width: 1920px) {
   .app-card {
-    max-width: 1920px; /* even wider on massive screens */
+    max-width: 1920px;
   }
-}
+} */
 
 
 
@@ -95,8 +92,8 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-
-  background: radial-gradient(circle at 30% 30%, #ffb347, #ff7a18);
+  box-shadow: 0px 0px 20px rgb(255, 255, 255);
+/* background: radial-gradient(circle at 30% 30%, #ffb347, #ff7a18); */
 }
 
 .monk-image img {
@@ -130,16 +127,38 @@
 }
 
 
-/* body {
-  min-height: 100vh;
-  max-width: 100%;
-} */
+.ghost{
+  appearance: none;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgb(255, 255, 255);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(124, 79, 221);
+}
+
+.ghost:hover {
+  background:rgb(255, 255, 255);
+  box-shadow: 0px 0px 25px rgb(255, 255, 255);
+}
+
+.header h1 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  margin: 0;
+  color: rgb(129, 80, 162);
+  letter-spacing: 0.5px;
+}
 
 h4 {
-  color: rgb(169, 110, 43);
-  font-weight: 500;
-  margin-top: 50px;
-  letter-spacing: 1px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0px 0px 6px rgb(67, 16, 92);
 }
 
 ul, li {
