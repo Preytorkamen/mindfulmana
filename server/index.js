@@ -3,9 +3,11 @@
 // to talk to this backend. The dotenv library reads a .env file and puts
 // the values into process.env.
 
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
+import { query } from './db.js';
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
 
 // Load environment variables from .env file into process.env
 dotenv.config(); 
@@ -36,6 +38,16 @@ const quotes = [
 app.get('/api/quotes/random', (req, res) => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     res.json({ quote: randomQuote });
+});
+
+app.get("/api/test-db", async (req, res) => {
+  try {
+    const result = await query("SELECT NOW()");
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "DB connection failed" });
+  }
 });
 
 app.listen(PORT, () => {
