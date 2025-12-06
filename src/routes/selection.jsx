@@ -12,7 +12,7 @@ function Selection() {
 
   return (
     <>
-    <body className="selection-page bg-landing1">
+    <div className="selection-page bg-landing1">
       <div className="app-wrapper">
         <div className="app-card bg-ghost">
 
@@ -24,7 +24,7 @@ function Selection() {
               {/* Meditation Cards */}
               <div className="list-container">
                 <article>
-                    <MeditationCard image= {koi} alt="Koi" minutes={5} />
+                    <MeditationCard image= {koi} alt="Koi" minutes={1} />
                     <MeditationCard image= {lily} alt="Lily" minutes={15} />
                     <MeditationCard image= {wave} alt="Wave" minutes={25} />
                 </article>
@@ -33,7 +33,7 @@ function Selection() {
           </div>
         </div>
       </div>
-    </body>
+    </div>
     </>
   )
 }

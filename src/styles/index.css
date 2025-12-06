@@ -1,7 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
 #root {
-  max-width: 1280px;
+  /* max-width: 1920px; */
   margin: 0px auto;
-  padding: 0.5rem;
+  padding: 0.0rem;
   text-align: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -13,6 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: center;  
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 /* The phone-shaped gradient card */
