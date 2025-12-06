@@ -19,3 +19,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.bg-orb {
+  background-image: radial-gradient(circle at 30% 30%, #ffffff, #ff9eca);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari*/
+  border: 2px solid rgb(255, 255, 255);
+}

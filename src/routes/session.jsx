@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 // useNavigate = "Redirects user to another page programmatically, rather than clicking a link"
 import '../styles/session.css';
 
+
 export default function Session() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -86,52 +87,53 @@ export default function Session() {
     }, [cycleDuration, isPaused]);
 
     return (
-        <body className="session-page">
-            <div>
-                <div className = "orb-ui-container">
-                    <div className="orb-wrapper">
-                        {/* Actual Orb Ball*/}
-                        <div className = "orb" style = {{ 
-                            "--cycle-duration": `${cycleDuration}s`,
-                            animationPlayState: isPaused ? "paused" : "running", }}>
+        <body className="session-page bg-landing1">
+            <div className="app-wrapper">
+                <div className="app-card bg-ghost">
+                    <div className="orb-components-container">
+                        <div className="orb-wrapper">
+                            {/* Actual Orb Ball*/}
+                            <div className = "orb bg-orb" style = {{ 
+                                "--cycle-duration": `${cycleDuration}s`,
+                                animationPlayState: isPaused ? "paused" : "running"}}>
+                            </div>
+                            {/* Inhale / Hold / Exhale Text */}
+                            <div className={`breath-cue breath-${breathPhase}`}>
+                                {breathPhase === "Inhale" && "Breathe In"}
+                                {breathPhase === "Hold" && "Hold"}
+                                {breathPhase === "Exhale" && "Exhale"}
+                            </div>
                         </div>
-                        {/* Inhale / Hold / Exhale Text */}
-                        <div className={`breath-cue breath-${breathPhase}`}>
-                            {breathPhase === "Inhale" && "Breathe In"}
-                            {breathPhase === "Hold" && "Hold"}
-                            {breathPhase === "Exhale" && "Exhale"}
+
+                        {/* Timer and Controls */}
+                        <div className="session-info">
+                            <div className = "timer">
+                                {mins.toString().padStart(2, "0")}:
+                                {secs.toString().padStart(2, "0")}
+                            </div>
+
+                            {/* Session Complete Message     */}
+                            {remaining === 0 && (
+                                <h4>
+                                    Session complete. You can calmly return whenever you're ready.
+                                </h4>
+                            )}     
+                            <div className="session-controls">
+                                <button
+                                    className="session-button ghost"
+                                    onClick={() => setIsPaused((p) => !p)}>
+                                    {isPaused ? "Resume" : "Pause"}
+                                </button>
+
+                                <button
+                                    className="session-button ghost"
+                                    onClick={() => navigate("/")}>
+                                        End Session
+                                </button>
+                            </div>
                         </div>
                     </div>
-
-
-                    {/* Timer and Controls */}
-                    <div className="session-info">
-                        <div className = "timer">
-                            {mins.toString().padStart(2, "0")}:
-                            {secs.toString().padStart(2, "0")}
-                        </div>
-
-                        <div className="session-controls">
-                            <button
-                                className="session-button ghost"
-                                onClick={() => setIsPaused((p) => !p)}>
-                                {isPaused ? "Resume" : "Pause"}
-                            </button>
-
-                            <button
-                                className="session-button ghost"
-                                onClick={() => navigate("/")}>
-                                    End Session
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
-                    {remaining === 0 && (
-                        <p className="session-complete-text">
-                            Session complete. You can calmly return whenever you're ready.
-                        </p>
-                    )}
             </div>
         </body>
     );

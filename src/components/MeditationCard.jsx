@@ -6,10 +6,10 @@ export default function MeditationCard({ image, minutes }) {
     <Link
       to="/session"
       state={{ minutes }}  // Pass the minutes as route state
-      className="meditationCard"
+      className="meditationCard bg-moon"
     >
       <img src={image} alt="Meditation Icon" />
-      <h1>{minutes} Minutes</h1>
+      <h4>{minutes} Minutes</h4>
     </Link>
   );
 }

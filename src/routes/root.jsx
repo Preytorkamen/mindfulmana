@@ -14,6 +14,7 @@ export default function Root() {
     <body className="root-page bg-landing1">
       <div className="app-wrapper">
         <div className="app-card bg-ghost">
+          
           {/* Header */}
           <div className="app-header">
             <Header title="Mindful Mana" />
