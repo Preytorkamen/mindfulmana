@@ -8,6 +8,21 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+// Helper function for GET /api/sessions/summary for Dashboard
+function buildDailyMinutes(rows) {
+    const map = new Map(); // Using a map instead of an object to stay clean
+
+    for (const row of rows) {
+        const d = new Date(row.completed_at);
+        const key = d.toISOString().slice(0,10); // Takes the weird date format and slices to YYYY-MM-DD
+        map.set(key, (map.get(key) || 0) + row.duration_minutes);
+    }
+
+    return Array.from(map.entries())
+        .sort(([a],[b]) => (a < b ? -1 : 1))    // Sort by date, ascending
+        .map(([date, minutes]) => ({ date, minutes })); // Formatting
+}
+
 
 // Load environment variables from .env file into process.env
 dotenv.config(); 
@@ -40,6 +55,8 @@ app.get('/api/quotes/random', (req, res) => {
     res.json({ quote: randomQuote });
 });
 
+
+// POSTGRESQL DATABASE STUFF
 app.get("/api/test-db", async (req, res) => {
   try {
     const result = await query("SELECT NOW()");
@@ -48,6 +65,76 @@ app.get("/api/test-db", async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "DB connection failed" });
   }
+});
+
+// Dashboard Summary
+app.get('/api/sessions/summary', async (req, res) => {
+    try {
+        // For now, include all. But later, filter by user ID
+        const totalsResult = await query(
+            `SELECT
+                COALESCE(SUM(duration_minutes), 0) AS total_minutes,
+                COUNT(*) AS total_sessions
+            FROM sessions`
+        );
+
+        const { total_minutes, total_sessions } = totalsResult.rows[0];
+
+        const recentResult = await query(
+            `SELECT id, duration_minutes, completed_at
+            FROM sessions
+            ORDER BY completed_at DESC
+            LIMIT 10`
+        );
+
+        const dailyResult = await query(
+            `SELECT duration_minutes, completed_at
+            FROM sessions
+            WHERE completed_at >= NOW() - INTERVAL '30 days'
+            ORDER BY completed_at ASC`
+        );
+
+        const dailyMinutes = buildDailyMinutes(dailyResult.rows);
+
+        res.json({
+            totalMinutes: Number(total_minutes),
+            totalSessions: Number(total_sessions),
+            dailyMinutes,
+            recentSessions: recentResult.rows,
+        });
+    } catch (err) {
+        console.error('Error fetching summary:', err);
+        res.status(500).json({ error: 'Failed to fetch summary' });
+    }
+});
+
+// POST /api/sessions (Logging a meditation session)
+app.post('/api/sessions', async (req, res) => {
+    try {
+        const { durationMinutes } = req.body;
+
+        // Quick validation
+        if (!Number.isInteger(durationMinutes) || durationMinutes <= 0) {
+            return res
+            .status(400)
+            .json({ error: 'durationMinutes must be a positive integer' });
+        }
+
+        // I will use real userID from auth later. Null for now
+        const userID = null;
+
+        const result = await query(
+            `INSERT INTO sessions (user_id, duration_minutes)
+            VALUES ($1, $2)
+            RETURNING id, user_id, duration_minutes, completed_at`,
+            [userID, durationMinutes]
+        );
+
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error('Error logging session:', err);
+        res.status(500).json({ error: 'Failed to log session' });
+    }
 });
 
 app.listen(PORT, () => {
