@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { API_BASE_URL } from "../apiconfig.js";
 // useLocation = "What page am I on, and what data was sent to me?"
 // useNavigate = "Redirects user to another page programmatically, rather than clicking a link"
 import '../styles/session.css';
@@ -12,8 +13,6 @@ export default function Session() {
     // Setting up Countdown Shenanigans
     const minutes = location.state?.minutes ?? 5;
     const totalSeconds = minutes * 60;
-    
-    
     
     // Timer
     const [remaining, setRemaining] = useState(totalSeconds);
@@ -86,8 +85,33 @@ export default function Session() {
         return () => clearInterval(id);
     }, [cycleDuration, isPaused]);
 
+    // Make sure I only log once per session
+    const hasLoggedRef = useRef(false);
+
+    // When the timer hits 0, log the session once
+    useEffect(() => {
+        if (remaining === 0 && !hasLoggedRef.current) {
+            hasLoggedRef.current = true;
+            logSession();
+        }
+    }, [remaining]);
+
+    // Call backend to log this session
+    async function logSession() {
+        try {
+            await fetch(`${API_BASE_URL}/api/sessions`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ durationMinutes: minutes }),
+            });
+        } catch (err) {
+            console.error("Failed to log session:", err);
+        }
+    }
+
+
     return (
-        <body className="session-page bg-landing1">
+        <div className="session-page bg-landing1">
             <div className="app-wrapper">
                 <div className="app-card bg-ghost">
                     <div className="orb-components-container">
@@ -135,6 +159,6 @@ export default function Session() {
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
     );
 }

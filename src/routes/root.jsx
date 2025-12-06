@@ -8,10 +8,11 @@ import monk from "../assets/Monk.png";
 import '../styles/index.css';
 import '../styles/root.css';
 import '../styles/backgrounds.css';
+import StatsDashboard from "../components/StatsDashboard.jsx";
 
 export default function Root() {
   return (
-    <body className="root-page bg-landing1">
+    <div className="root-page bg-landing1">
       <div className="app-wrapper">
         <div className="app-card bg-ghost">
           
@@ -36,6 +37,9 @@ export default function Root() {
           <QuoteWidget />
         </div>
       </div>
-    </body>
+        <section className="home-stats-section">
+          <StatsDashboard />
+        </section>
+    </div>
   );
 }
