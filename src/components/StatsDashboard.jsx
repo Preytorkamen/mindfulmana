@@ -1,5 +1,18 @@
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../apiconfig.js';
+import '../styles/backgrounds.css';
+import '../styles/stats-dashboard.css';
+import {
+    LineChart,
+    Line,
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    Tooltip,
+    CartesianGrid,
+    ResponsiveContainer,
+} from 'recharts';
 
 export default function StatsDashboard({ refreshKey = 0 }) {
     const [summary, setSummary] = useState(null);
@@ -30,15 +43,46 @@ export default function StatsDashboard({ refreshKey = 0 }) {
     if (!summary) return null;
 
     const { totalMinutes, totalSessions, dailyMinutes, recentSessions } = summary;
+    const totalHours = (totalMinutes / 60).toFixed(1);
+    const avgSessionLength = totalSessions
+        ? (totalMinutes / totalSessions).toFixed(1)
+        : 0;
+    const dailyMinutesChartData = (dailyMinutes || []).map((d) => ({
+        label: new Date(d.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+        minutes: d.minutes,
+    }));
 
     return (
-        <div className="stats-card">
-      <h2 className="stats-title">Your Mindful Mana</h2>
+    <div className="stats-dashboard">
+        <h2 className="stats-title">Your Mana</h2>
+        <p className="stats-subtitle-main">
+            A calm overview of your meditation practice.
+        </p>
 
-      <div className="stats-grid">
-        <Stat label="Total Minutes" value={totalMinutes} />
-        <Stat label="Sessions" value={totalSessions} />
-      </div>
+        {/* Top Stats Row */}
+        <div className="stats-grid">
+            <div className="db-stat bg-ghost">
+                <Stat label="Total Minutes" value={totalMinutes} subtext={`${totalHours} hours`}/>
+            </div>
+            <div className="db-stat bg-ghost">
+                <Stat label="Sessions" value={totalSessions} subtext="Every sit is a step in your journey"/>
+            </div>
+            <div className="db-stat bg-ghost">
+                <Stat label="Avg Session" value={`${avgSessionLength} min`} subtext="On average per session"/>
+            </div>
+        </div>
+
+        {/* Daily Minutes Chart */}
+        <div className="chart bg-ghost">
+            <ResponsiveContainer width="100%" height={260}>
+            <LineChart data={dailyMinutesChartData}  margin={{ top: 20, right: 50, bottom: 20, left: 0 }}>
+                <XAxis dataKey="label" stroke="white"/>
+                <YAxis stroke="white"/>
+                <Tooltip />
+                <Line type="monotone" dataKey="minutes" stroke="#ffffffff" strokeWidth={3} dot={{ r: 6}} />
+            </LineChart>
+            </ResponsiveContainer>
+        </div>
 
       <h3 className="stats-subtitle">Recent Sessions</h3>
       <ul className="recent-sessions">
@@ -62,11 +106,12 @@ export default function StatsDashboard({ refreshKey = 0 }) {
     );
 }
 
-function Stat({ label, value }) {
+function Stat({ label, value, subtext }) {
     return (
         <div className="stat">
       <div className="stat-value">{value}</div>
       <div className="stat-label">{label}</div>
+      {subtext && <div className="stat-subtext">{subtext}</div>}
     </div>
     );
 }
