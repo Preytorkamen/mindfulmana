@@ -37,9 +37,11 @@ export default function Root() {
           <QuoteWidget />
         </div>
       </div>
+      <div className="dashboard-card bg-ghost">
         <section className="home-stats-section">
           <StatsDashboard />
         </section>
+      </div>
     </div>
   );
 }

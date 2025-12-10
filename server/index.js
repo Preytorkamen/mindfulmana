@@ -88,13 +88,17 @@ app.get('/api/sessions/summary', async (req, res) => {
         );
 
         const dailyResult = await query(
-            `SELECT duration_minutes, completed_at
+            `SELECT
+            DATE(completed_at) AS date,
+            SUM(duration_minutes) AS minutes
             FROM sessions
             WHERE completed_at >= NOW() - INTERVAL '30 days'
-            ORDER BY completed_at ASC`
+            GROUP BY DATE(completed_at)
+            ORDER BY DATE(completed_at) ASC`
         );
 
-        const dailyMinutes = buildDailyMinutes(dailyResult.rows);
+// Now dailyResult.rows is already [{ date: '2025-12-05', minutes: 5 }, ...]
+const dailyMinutes = dailyResult.rows;
 
         res.json({
             totalMinutes: Number(total_minutes),
