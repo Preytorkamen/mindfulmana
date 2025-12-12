@@ -24,7 +24,7 @@ function Selection() {
               {/* Meditation Cards */}
               <div className="list-container">
                 <article>
-                    <MeditationCard image= {koi} alt="Koi" minutes={1} />
+                    <MeditationCard image= {koi} alt="Koi" minutes={5} />
                     <MeditationCard image= {lily} alt="Lily" minutes={15} />
                     <MeditationCard image= {wave} alt="Wave" minutes={25} />
                 </article>
