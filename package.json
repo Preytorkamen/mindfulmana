@@ -13,6 +13,8 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",
