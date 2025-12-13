@@ -19,6 +19,10 @@
   object-fit: contain;
 }
 
+.dashboard-card {
+  margin-top: 48px;
+}
+
 /* Button + link */
 .begin-link {
   text-decoration: none;

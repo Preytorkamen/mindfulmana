@@ -101,7 +101,9 @@ export default function Session() {
         try {
             await fetch(`${API_BASE_URL}/api/sessions`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`,
+                 },
                 body: JSON.stringify({ durationMinutes: minutes }),
             });
         } catch (err) {
