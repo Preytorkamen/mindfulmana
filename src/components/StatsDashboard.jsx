@@ -14,29 +14,47 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 
-export default function StatsDashboard({ refreshKey = 0 }) {
+export default function StatsDashboard({ user, token }) {
     const [summary, setSummary] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
     useEffect(() => {
+        if (!token) return;
+
         async function fetchSummary() {
             setLoading(true);
             setError("");
+
+        try {
+        const res = await fetch(`${API_BASE_URL}/api/sessions/summary`, {
+            headers: {
+            "Authorization": `Bearer ${token}`,
+            },
+        });
+
+        if (!res.ok) {
+            let msg = "Failed to fetch sessions summary";
             try {
-                const res = await fetch(`${API_BASE_URL}/api/sessions/summary`);
-                if (!res.ok) throw new Error("Failed to fetch sessions summary");
-                const data = await res.json();
-                setSummary(data);
-            } catch (err) {
-                console.error(err);
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        }   
-        fetchSummary();
-    }, []); // Put refreshKey in dependency array later if needed
+            const errData = await res.json();
+            msg = errData.error || msg;
+            } catch {}
+            throw new Error(`${res.status} ${msg}`);
+        }
+
+        const data = await res.json();
+        setSummary(data);
+        } catch (err) {
+        console.error(err);
+        setError(err.message);
+        } finally {
+        setLoading(false);
+        }
+    }
+
+    fetchSummary();
+    }, [token]);
+
 
     if (loading) return <div>Loading your stats...</div>
     if (error) return <div>Error: {error}</div>
@@ -55,6 +73,7 @@ export default function StatsDashboard({ refreshKey = 0 }) {
     return (
     <div className="stats-dashboard">
         <h2 className="stats-title">Your Mana</h2>
+        <div>{user.email}</div>
         <p className="stats-subtitle-main">
             A calm overview of your meditation practice.
         </p>

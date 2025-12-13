@@ -35,6 +35,7 @@ html, body, #root {
 
 /* The phone-shaped gradient card */
 .app-card {
+  margin-top: 24px;
   width: 100%;
   max-width: 420px;         /* never wider than this */
   padding: 1.5rem 1.75rem;
@@ -94,9 +95,28 @@ html, body, #root {
   .app-card {
     padding: 1.1rem 0.9rem;
   }
+  .field {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  label {
+    justify-self: start;
+  }
+  .button-container{
+    display: grid;
+    gap: 10px;
+  }
 
   .monk-image {
     width: 200px;
+  }
+
+  input {
+    width: 100%;
+  }
+  .form-btn {
+    width: 70%;
+    justify-content: center;
   }
 }
 
@@ -126,13 +146,63 @@ html, body, #root {
   letter-spacing: 0.5px;
 }
 
-h4 {
+h4, h3 {
   color: rgb(255, 255, 255);
   font-weight: 600;
   margin-top: 12px;
   margin-bottom: 12px;
   letter-spacing: 0.5px;
   text-shadow: 0px 0px 6px var(--main-shadow);
+}
+
+.auth-form{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+}
+
+.form-btn:hover {
+  background:rgb(255, 255, 255);
+  box-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+.form-container{
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+}
+
+label{
+  font-size: larger;
+  font-weight: 600;
+  justify-self: end;
+  margin: 0;          /* your h3,label rule adds margins; this prevents misalignment */
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
+}
+
+.form-btn {
+  margin:12px;
+}
+
+input{
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.15);
+  color: var(--main-text);
+  outline: none;
 }
 
 ul, li {

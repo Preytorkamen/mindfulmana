@@ -195,14 +195,11 @@ app.get('/api/me', authMiddleware, async (req, res) => {
     }
 });
 
-
-
-
-
-
 // Dashboard Summary
 app.get('/api/sessions/summary', authMiddleware, async (req, res) => {
     try {
+        const userID = req.user.id;
+        
         // For now, include all. But later, filter by user ID
         const totalsResult = await query(
             `SELECT
