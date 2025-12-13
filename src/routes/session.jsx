@@ -4,9 +4,11 @@ import { API_BASE_URL } from "../apiconfig.js";
 // useLocation = "What page am I on, and what data was sent to me?"
 // useNavigate = "Redirects user to another page programmatically, rather than clicking a link"
 import '../styles/session.css';
+import { useOutletContext } from "react-router-dom";
 
 
-export default function Session() {
+export default function meditate() {
+    const { user, token, handleLogout } = useOutletContext();
     const location = useLocation();
     const navigate = useNavigate();
     
@@ -97,8 +99,10 @@ export default function Session() {
     }, [remaining]);
 
     // Call backend to log this session
+
     async function logSession() {
         try {
+            if (!token) throw new Error("No token found (user not logged in)");
             await fetch(`${API_BASE_URL}/api/sessions`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json",

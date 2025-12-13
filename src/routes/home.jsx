@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Header from "../components/Header.jsx";
 import QuoteWidget from "../components/QuoteWidget.jsx";
@@ -11,7 +11,7 @@ import "../styles/root.css";
 import "../styles/backgrounds.css";
 import StatsDashboard from "../components/StatsDashboard.jsx";
 
-export default function Root() {
+export default function Home() {
   const [auth, setAuth] = useState(() => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
@@ -40,12 +40,33 @@ export default function Root() {
   }
 
   return (
-    <Outlet
-      context={{
-        user,
-        token,
-        handleLogout,
-      }}
-    />
+    <div className="root-page bg-landing1">
+      <div className="app-wrapper">
+        <div className="app-card bg-ghost">
+          <div className="app-header">
+            <Header title="Mindful Mana" />
+            <h4>Welcome, {user?.email}</h4>
+            <button onClick={handleLogout} className="logout-btn ghost">
+              Log Out
+            </button>
+          </div>
+
+          <div className="monk-image bg-moon">
+            <img src={monk} alt="Monk" />
+          </div>
+
+          <Link to="selection" className="begin-link">
+            <button className="ghost">Begin Meditation</button>
+          </Link>
+
+          <QuoteWidget />
+        </div>
+      </div>
+      <div className="dashboard-card bg-ghost">
+        <section className="home-stats-section">
+          <StatsDashboard user={user} token={token} />
+        </section>
+      </div>
+    </div>
   );
 }
