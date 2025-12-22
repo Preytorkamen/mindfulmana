@@ -22,9 +22,6 @@ Email: joetest@domain.com
 
 Pass: 1234567
 
-GH Pages Front End: https://preytorkamen.github.io/mindfulmana/
-
-
 ### 🖼️ Preview Images
 
 ![Home Screen](./src//assets/HomeScreenshot.png)
