@@ -18,8 +18,9 @@ MindfulMana is a lightweight React application designed to help users practice s
 Shipped Vercel Version: https://mindful-mana.vercel.app/
 
 ## DEMO LOGIN
-joetest@domain.com
-1234567
+Email: joetest@domain.com
+
+Pass: 1234567
 
 GH Pages Front End: https://preytorkamen.github.io/mindfulmana/
 
